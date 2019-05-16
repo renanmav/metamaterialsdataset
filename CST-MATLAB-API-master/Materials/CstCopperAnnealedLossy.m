@@ -11,12 +11,14 @@
 % GNU General Public License for more details.
 
 
-function CstCopperAnnealedLossy(mws)
+function name = CstCopperAnnealedLossy(mws)
 %'@ define material: Copper (annealed)
+
+name = 'Copper (annealed)';
 
 material = invoke(mws,'material');
 invoke(material,'Reset');
-invoke(material,'Name','Copper (annealed)'); 
+invoke(material,'Name',name); 
 invoke(material,'FrqType','static');
 invoke(material,'Type','Normal');
 invoke(material,'SetMaterialUnit','Hz','mm');

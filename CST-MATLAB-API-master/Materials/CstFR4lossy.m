@@ -11,17 +11,20 @@
 % GNU General Public License for more details.
 
 
-function CstFR4lossy(mws)
+function [name, epsilon] = CstFR4lossy(mws)
 
 %'@ define material: FR-4 (lossy)
 
+name = 'FR-4 (lossy)';
+epsilon = 4.3;
+
 material = invoke(mws,'material');
 invoke(material,'Reset');
-invoke(material,'Name','FR-4 (lossy)'); 
+invoke(material,'Name',name); 
 invoke(material,'FrqType','all');
 invoke(material,'Type','Normal');
 invoke(material,'SetMaterialUnit','GHz','mm');
-invoke(material,'Epsilon','4.3');
+invoke(material,'Epsilon',num2str(epsilon));
 invoke(material,'Mue','1.0');
 invoke(material,'Kappa','0.0');
 invoke(material,'TanD','0.025');

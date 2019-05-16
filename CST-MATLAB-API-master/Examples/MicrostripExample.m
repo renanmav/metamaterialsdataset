@@ -184,7 +184,7 @@ CstDefineFarfieldMonitor(mws,strcat('Farfield',2.45), 2.45);
 
 
 %Saves the project
-CstSaveProject(mws)
+%CstSaveProject(mws)
 
 %Defines the solver and starts simulation (I also have frequency domain solver and Integral solver)
 %-40 corresponds to accuracy
