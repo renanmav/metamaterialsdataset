@@ -40,9 +40,13 @@ mws = cst.invoke('NewMWS');
 %CSTDefineUnits function in the api Home folder that you can use to assign you own units
 CstDefaultUnits(mws) 
 
+fcenter = 2.45;
+fmin = 0.97*fcenter;
+fmax = 1.03*fcenter;
+
 %The frequency sweep of your simulation. Here in GHz, remember that the
 %CSTDefaulttUnits from before uses GHz
-CstDefineFrequencyRange(mws,1.5,3.5)
+CstDefineFrequencyRange(mws,fmin,fmax)
 
 %Initiates the auto-meshing
 CstMeshInitiator(mws)
@@ -58,8 +62,8 @@ Ymin='expanded open';
 Ymax='expanded open';
 Zmin='expanded open';
 Zmax='expanded open';
-minfrequency = 1.5;
-CstDefineOpenBoundary(mws,minfrequency,Xmin,Xmax,Ymin,Ymax,Zmin,Zmax)
+%minfrequency = 1.5;
+CstDefineOpenBoundary(mws,fmin,Xmin,Xmax,Ymin,Ymax,Zmin,Zmax)
 
 %This function defines the Backround material, here we are using the
 %default assignment of CST which is vacuum (permittivity=permeability=1)
@@ -178,9 +182,9 @@ Orientation = 'positive';
 CstWaveguidePort(mws,PortNumber, Xrange, Yrange, Zrange, XrangeAdd, YrangeAdd, ZrangeAdd,Coordinates,Orientation)
 
 %Here I am assigning monitors for the e-field, h-field and farfield at 2.45GHz 
-CstDefineEfieldMonitor(mws,strcat('e-field', 2.45),2.45);
-CstDefineHfieldMonitor(mws,strcat('h-field', 2.45), 2.45);
-CstDefineFarfieldMonitor(mws,strcat('Farfield',2.45), 2.45);
+%CstDefineEfieldMonitor(mws,strcat('e-field', 2.45),2.45);
+%CstDefineHfieldMonitor(mws,strcat('h-field', 2.45), 2.45);
+CstDefineFarfieldMonitor(mws,strcat('Farfield',fcenter), fcenter);
 
 
 %Saves the project
