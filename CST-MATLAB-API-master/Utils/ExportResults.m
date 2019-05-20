@@ -41,12 +41,12 @@ invoke(ASCIIExport,'FileName', strcat(path,'\',num2str(folderName),'\','pr.txt')
 invoke(ASCIIExport,'Execute');
 
 % Get Zin
-SelectTreeItem = invoke(mws,'SelectTreeItem','1D Results\Reference Impedance\ZRef 1(1)');
-ASCIIExport = invoke(mws,'ASCIIExport');
-invoke(ASCIIExport,'Reset');
-invoke(ASCIIExport,'SetVersion','2010');
-invoke(ASCIIExport,'FileName', strcat(path,'\',num2str(folderName),'\','zin.txt'));
-invoke(ASCIIExport,'Execute');
+%SelectTreeItem = invoke(mws,'SelectTreeItem','1D Results\Reference Impedance\ZRef 1(1)');
+%ASCIIExport = invoke(mws,'ASCIIExport');
+%invoke(ASCIIExport,'Reset');
+%invoke(ASCIIExport,'SetVersion','2010');
+%invoke(ASCIIExport,'FileName', strcat(path,'\',num2str(folderName),'\','zin.txt'));
+%invoke(ASCIIExport,'Execute');
 
 
 end
