@@ -9,12 +9,12 @@ csvwrite(strcat(path,'\',num2str(folderName),'\','features.csv'), features);
 CstExportSparametersTXT(mws, strcat(path,'\',num2str(folderName),'\','s.txt'));
 
 % Get gain
-%SelectTreeItem = invoke(mws,'SelectTreeItem','Tables\1D Results\Gain');
-%ASCIIExport = invoke(mws,'ASCIIExport');
-%invoke(ASCIIExport,'Reset');
-%invoke(ASCIIExport,'SetVersion','2010');
-%invoke(ASCIIExport,'FileName', strcat(path,'\',num2str(folderName),'\','gain.txt'));
-%invoke(ASCIIExport,'Execute');
+SelectTreeItem = invoke(mws,'SelectTreeItem','Tables\1D Results\Gain');
+ASCIIExport = invoke(mws,'ASCIIExport');
+invoke(ASCIIExport,'Reset');
+invoke(ASCIIExport,'SetVersion','2010');
+invoke(ASCIIExport,'FileName', strcat(path,'\',num2str(folderName),'\','gain.txt'));
+invoke(ASCIIExport,'Execute');
 
 % Get VSWR
 SelectTreeItem = invoke(mws,'SelectTreeItem','1D Results\VSWR\VSWR1');
