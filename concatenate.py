@@ -32,12 +32,21 @@ for simulation in results:
                 df_txt = pd.read_csv(infile.name, skiprows=[0,1], header=None, delim_whitespace=True)
 
                 value = file.split('.')[0]
+
                 df_txt.columns = ['f', value]
 
                 row_f = df_txt[df_txt.f == 3.5]
                 row_f.reset_index(inplace=True)
 
                 df_targets_simulation.insert(loc=0, column=value, value=row_f[value])
+
+                # getting bandwidth
+                if value == 's':
+                    df_util = df_txt.loc[df_txt['s'] <= (-10)]
+
+                    bandwidth = (df_util.f.max() - df_util.f.min())*1000
+
+                    df_targets_simulation.insert(loc=0, column='bandwidth', value=bandwidth)
 
             pbar.update()
 
@@ -48,4 +57,8 @@ df_features.columns = ['Wm', 'W0m', 'dm', 'tm', 'hm', 'h0', 'cols', 'offset', 'd
 
 df = df_features.join(df_targets)
 
+df = df.drop(['hm', 'h0'], axis=1)
+
 print(df.head(),'\n',df.info(), '\n', df.describe())
+
+df.to_csv('./antenna.csv', index=False)
